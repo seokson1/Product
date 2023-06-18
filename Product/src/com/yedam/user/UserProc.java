@@ -65,9 +65,6 @@ public class UserProc {
 			return;
 		}
 	}
-	public void buy() {
-		
-	}
 	public void buyList() {
 		
 	}

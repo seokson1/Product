@@ -89,12 +89,16 @@ public class ProductDao {
 	public ProductVO search(int no) {
 		conn = Dao.getConnect();
 		sql = "select * from tbl_product where pro_no = ?";
-		sql1 = "insert into tbl_user (user_buyname, user_buyprice, user_seller) "
-				+ "values(?,?,?)";
-
+		sql1 = "insert into tbl_user (user-no,user_buyname, user_buyprice, user_seller) "
+				+ "values(user_seq.nextval ,?,?,?)";
+		PreparedStatement psmt1;
 		try {
+			String name;
+			int price;
+			String seller;
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, no);
+			
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				ProductVO provo = new ProductVO();
@@ -106,11 +110,20 @@ public class ProductDao {
 				provo.setProMakdate(rs.getString("pro_makdate"));
 				provo.setMakeId(rs.getString("pro_makefactureId"));
 				
-				psmt = conn.prepareStatement(sql1);
-				psmt.setString(1, provo.getProName());
-				psmt.setInt(2, provo.getProPrice());
-				psmt.setString(3, provo.getProSeller());
 				
+				
+				name = provo.getProName();
+				price = provo.getProPrice();
+				seller = provo.getProSeller();
+				
+				psmt1 = conn.prepareStatement(sql1);
+				psmt1.setString(1, name);
+				psmt1.setInt(2, price);
+				psmt1.setString(3, seller);
+				int r = psmt1.executeUpdate();
+				if(r > 0) {
+					
+				}
 				
 				return provo;
 
@@ -125,8 +138,8 @@ public class ProductDao {
 	}
 	public void buy(int number) {
 		conn = Dao.getConnect();
-		sql = "insert into tbl_user (user_buyname, user_buyprice, user_seller, user_buyin) "
-				+ "values()";
+		sql = "insert into tbl_user (user_buyname, user_buyprice, user_seller, user_quantity) "
+				+ "values(?,?,?,)";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -186,7 +199,6 @@ public class ProductDao {
 			ProductVO prov = new ProductVO();
 			
 			int r = psmt.executeUpdate();
-			
 			if(r > 0) {
 				return true;
 			}
@@ -200,11 +212,16 @@ public class ProductDao {
 	}
 	public int rsInventory(int no) {
 		conn = Dao.getConnect();
-		sql = "";
+		sql = "select pro_inventory from tbl_product where pro_no = ? ";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			
+			psmt.setInt(1, no);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				int result =  rs.getInt("pro_inventory");
+				return result; 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

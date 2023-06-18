@@ -14,8 +14,7 @@ public class ManagerMain {
 				int selectNo = 0;
 				System.out.println("1.관리자 가입 | 2.관리자 조회 | 3.관리자 수정 | 4.관리자 삭제 | 5.관리자 목록  |6.종료");
 				System.out.print("선택> ");
-				selectNo = scn.nextInt();
-				scn.nextLine();
+				selectNo = scn.nextInt(); scn.nextLine();
 
 				switch (selectNo) {
 				case SelectNo.MEMBER: // 회원가입

@@ -120,6 +120,10 @@ public class ProductProc {
 			System.out.println("출고> ");
 			int no2 = scn.nextInt();
 			scn.nextLine();
+			if(pdao.rsInventory(no) - no2 < 0) {
+				System.out.println("재고량이 부족합니다.");
+				return;
+			}
 			if (pdao.productout(no, no2)) {
 				System.out.println("출고 되었습니다.");
 			} else {

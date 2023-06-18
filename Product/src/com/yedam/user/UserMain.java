@@ -35,10 +35,10 @@ public class UserMain {
 				case SelectNo.EXIT:
 					pdao.exit();
 					break;
-
 				}
 			} catch (ExitException e) {
 				e.getMsg();
+				break;
 			}
 		}
 	}

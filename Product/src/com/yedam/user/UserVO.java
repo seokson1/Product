@@ -2,11 +2,15 @@ package com.yedam.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class UserVO {
 	private int userNo;
@@ -23,7 +27,7 @@ public class UserVO {
 	private String buyName;
 	private String buyPrice;
 	private String seller;
-	private int buyin;
+	private int quantity;
 	private int totalPrice;
 	
 	public String detailInfo() {
