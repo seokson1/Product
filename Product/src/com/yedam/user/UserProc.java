@@ -9,6 +9,7 @@ public class UserProc {
 	UserDao dao = new UserDao();
 	Scanner scn = new Scanner(System.in);
 	
+	// 회원가입을 위한 자료 입력
 	public void userJoin( ) {
 		
 		System.out.print("아이디> ");
@@ -40,6 +41,7 @@ public class UserProc {
 		
 		
 	}
+	// 회원 정보 조회를 위해서 아이디 입력
 	public void userSearch( ) {
 		System.out.print("조회할 아이디> ");
 		String userId = scn.nextLine();
@@ -53,6 +55,7 @@ public class UserProc {
 		}
 		
 	}
+	// 회원 탈퇴를 위해서 아이디 입력
 	public void withdrawal() {
 		System.out.print("탈퇴할 아이디> ");
 		String userId = scn.nextLine();
@@ -65,12 +68,7 @@ public class UserProc {
 			return;
 		}
 	}
-	public void buyList() {
-		
-	}
-	public void basketList() {
-		
-	}
+	// 시스템 종료
 	public void exit() throws ExitException {
 		throw new ExitException("프로그램을 종료합니다.");
 	}

@@ -17,19 +17,19 @@ public class ManagerMain {
 				selectNo = scn.nextInt(); scn.nextLine();
 
 				switch (selectNo) {
-				case SelectNo.MEMBER: // 회원가입
+				case SelectNo.MEMBER: // 관리자 가입
 					pdao.managerJoin();
 					break;
-				case SelectNo.SEARCH: // 회원조회
+				case SelectNo.SEARCH: // 관리자 조회
 					pdao.managerSearch();
 					break;
-				case SelectNo.MODIFY: // 회원수정
+				case SelectNo.MODIFY: // 관리자 정보수정
 					pdao.managerModify();
 					break;
-				case SelectNo.DELETE: // 회원삭제
+				case SelectNo.DELETE: // 관리자 삭제
 					pdao.managerDelete();
 					break;
-				case SelectNo.LIST: // 회원목록
+				case SelectNo.LIST: // 관리자 목록
 					pdao.managerList();
 					break;
 				case SelectNo.EXIT: // 종료

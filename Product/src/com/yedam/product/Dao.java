@@ -2,7 +2,7 @@ package com.yedam.product;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+// 오라클DB 연결을 위해서 작성
 public class Dao {
 
 	static String url = "jdbc:oracle:thin:@localhost:1521/xe";

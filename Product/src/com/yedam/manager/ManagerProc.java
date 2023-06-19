@@ -9,7 +9,8 @@ public class ManagerProc {
 
 	ManagerDao dao = new ManagerDao();
 	Scanner scn = new Scanner(System.in);
-
+	
+	//등록 정보 입력
 	public void managerJoin() {
 		System.out.print("아이디> ");
 		String managerId = scn.nextLine();
@@ -42,7 +43,7 @@ public class ManagerProc {
 		}
 
 	}
-
+	// 관리자 정보 조회할 아이디 입력
 	public void managerSearch() {
 		System.out.print("조회할 아이디> ");
 		String managerId = scn.nextLine();
@@ -53,7 +54,8 @@ public class ManagerProc {
 			System.out.println("조회할 아이디 없습니다.");
 		}
 	}
-
+	
+	// 관리자 정보 수정할 아이디 입력
 	public void managerModify() {
 		System.out.print("수정할 아이디 검색> ");
 		String managerId = scn.nextLine();
@@ -83,7 +85,7 @@ public class ManagerProc {
 		}
 
 	}
-
+	// 관리자 계정할 아이디 입력
 	public void managerDelete() {
 		System.out.print("삭제할 아이디 검색>");
 		String managerId = scn.nextLine();
@@ -94,7 +96,7 @@ public class ManagerProc {
 			System.out.println("삭제 실패했습니다.");
 		}
 	}
-
+	// 관리자 계정 조회
 	public void managerList() {
 		List<ManagerVO> list = dao.mgList();
 

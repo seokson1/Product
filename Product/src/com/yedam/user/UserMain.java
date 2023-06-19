@@ -12,7 +12,7 @@ public class UserMain {
 
 		while (true) {
 			try {
-				System.out.println("1.회원가입 | 2.회원조회 | 3.탈퇴  | 4.구매목록 | 5.장바구니 | 6.종료");
+				System.out.println("1.회원가입 | 2.회원조회 | 3.탈퇴  | 4.종료");
 				System.out.print("선택> ");
 				selectNo = scn.nextInt();
 				scn.nextLine();
@@ -26,13 +26,7 @@ public class UserMain {
 				case SelectNo.WITHDRAWAL: // 탈퇴
 					pdao.withdrawal();
 					break;
-				case SelectNo.BUYLIST: // 구매 리스트
-					pdao.buyList();
-					break;
-				case SelectNo.BASKETLIST:
-					pdao.basketList();
-					break;
-				case SelectNo.EXIT:
+				case SelectNo.EXIT: // 종료
 					pdao.exit();
 					break;
 				}

@@ -30,7 +30,9 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-	public boolean userLoginCheck(String id, String pw) {
+	// 상품 테이블에서 로그인 하기 위해서 만듬 메소드
+	// id, pw 정보 받아 쿼리문으로 성공, 실패 여부 판단
+	public String userLoginCheck(String id, String pw) {
 		conn = Dao.getConnect();
 		sql = "select * from tbl_user where user_id = ? and user_pw = ?";
 		
@@ -41,7 +43,7 @@ public class UserDao {
 			
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				return true;
+				return id;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,14 +52,14 @@ public class UserDao {
 		}
 		
 		
-		return false;
+		return null;
 	}
-
+	// 회원 가입 자료 DB에 저장
 	public boolean uJoin(UserVO userVo) {
 		conn = Dao.getConnect();
-		sql = "insert into tbl_user (user_no, user_id, user_pw, user_name,"
+		sql = "insert into tbl_user ( user_id, user_pw, user_name,"
 				+ " user_birth, user_phone, user_addr)"
-				+ " values(user_seq.nextval, ?,?,?,?,?,?) ";
+				+ " values( ?,?,?,?,?,?) ";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -78,7 +80,7 @@ public class UserDao {
 
 		return false;
 	}
-
+	// DB에서 자료 받아 콘솔 출력
 	public UserVO uSearch(String id) {
 		UserVO userVo = new UserVO();
 		conn = Dao.getConnect();
@@ -89,7 +91,6 @@ public class UserDao {
 			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
-				userVo.setUserNo(rs.getInt("user_no"));
 				userVo.setUserId(rs.getString("user_id"));
 				userVo.setUserBirth(rs.getString("user_birth"));
 				userVo.setUserPhone(rs.getString("user_phone"));
@@ -105,7 +106,7 @@ public class UserDao {
 		
 		return null; 
 	}
-
+	// DB 회원 데이터 삭제
 	public boolean uWithdrawal(String id) {
 		
 		conn = Dao.getConnect();
@@ -128,16 +129,5 @@ public class UserDao {
 		return false;
 	}
 
-	public void uBuy() {
-
-	}
-
-	public void uBuyList() {
-
-	}
-
-	public void uBasketList() {
-
-	}
 
 }

@@ -27,13 +27,13 @@ public class ProductVO {
 
 	public String detailInfo() {
 
-		String msg = " 상품번호: " + proNo + " 상품명: " + proName + " 상품가격: " + proPrice + " 기타정보: " + proInfo + " 판매자: "
-				+ proSeller + " 제조일자: " + proMakdate + " 제조회사: " + makeId;
+		String msg = " 상품번호: " + proNo + "| 상품명: " + proName + "| 상품가격: " + proPrice + "| 기타정보: " + proInfo + "| 판매자: "
+				+ proSeller + "| 제조일자: " + proMakdate + "| 제조회사: " + makeId;
 		return msg;
 	}
 
 	public String inventoryInfo() {
-		String msg = " 상품번호: " + proNo + " 상품명: " + proName + " 상품가격: "+  proPrice + " 재고관리: " + proInventory;
+		String msg = "상품번호: " + proNo + " 상품명: " + proName +  "\n"  +"상품가격: "+  proPrice + " 재고관리: " + proInventory;
 		
 		return msg;
 	}

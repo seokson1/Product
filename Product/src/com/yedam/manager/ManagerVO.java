@@ -24,13 +24,13 @@ public class ManagerVO {
 	private String managerEmail; // 관리자 메일
 	
 	public String detailInfo() {
-		return " 관리자번호 " + managerNo + " 아이디: " + managerId + " 비밀번호: " + managerPw + " 이름: " + 
-				managerName + " 생년월일: " + managerBirth + " 전화번호: " + 
+		return "관리자번호: " + managerNo + "| 아이디: " + managerId + "| 비밀번호: " + managerPw + "| 이름: " + 
+				managerName + "| 생년월일: " + managerBirth + "| 전화번호: " + 
 				managerPhone + " 주소: " + managerAddr + " 이메일: " + managerEmail;
 	}
 	public String info() {
-		return " 관리자번호 " + managerNo + " 아이디: " + managerId + " 이름: " + 
-				managerName + " 생년월일: " + managerBirth + " 전화번호: " + 
-				managerPhone + " 주소: " + managerAddr + " 이메일: " + managerEmail;
+		return "관리자번호: " + managerNo + "| 아이디: " + managerId + "| 이름: " + 
+				managerName + "| 생년월일: " + managerBirth + "| 전화번호: " + 
+				managerPhone + "| 주소: " + managerAddr + "| 이메일: " + managerEmail;
 	}
 }

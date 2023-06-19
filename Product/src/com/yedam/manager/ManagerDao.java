@@ -31,7 +31,7 @@ public class ManagerDao {
 			e.printStackTrace();
 		}
 	}
-
+	// 상품 테이블에서 관리자 아이디, 비밀번호 받아서 쿼리문으로 확인 후 로그인 진행
 	public boolean mgLoginCheck(String id, String pw) {
 		conn = Dao.getConnect();
 		sql = "select * from tbl_manager where manager_id =? and manager_pw =?";
@@ -53,7 +53,7 @@ public class ManagerDao {
 
 		return false;
 	}
-
+	// DB에 관리자 등록 정보 저장
 	public boolean mgJoin(ManagerVO mavo) {
 		conn = Dao.getConnect();
 		sql = "insert into tbl_manager (manager_no ,manager_id, manager_pw,"
@@ -65,7 +65,7 @@ public class ManagerDao {
 			psmt.setString(1, mavo.getManagerId());
 			psmt.setString(2, mavo.getManagerPw());
 			psmt.setString(3, mavo.getManagerName());
-			psmt.setString(4, mavo.getManagerBirth());
+			psmt.setString(4, mavo.getManagerBirth().substring(0,10));
 			psmt.setString(5, mavo.getManagerPhone());
 			psmt.setString(6, mavo.getManagerAddr());
 			psmt.setString(7, mavo.getManagerEmail());
@@ -82,7 +82,7 @@ public class ManagerDao {
 		return false;
 
 	}
-
+	// DB에서 데이터 가져와 콘솔에 출력
 	public ManagerVO mgSearch(String id) {
 		conn = Dao.getConnect();
 		sql = "select * from tbl_manager where manager_id = ?";
@@ -96,7 +96,7 @@ public class ManagerDao {
 				mavo.setManagerId(rs.getString("manager_id"));
 				mavo.setManagerPw(rs.getString("manager_pw"));
 				mavo.setManagerName(rs.getString("manager_name"));
-				mavo.setManagerBirth(rs.getString("manager_birth"));
+				mavo.setManagerBirth(rs.getString("manager_birth").substring(0,10));
 				mavo.setManagerPhone(rs.getString("manager_phone"));
 				mavo.setManagerAddr(rs.getString("manager_addr"));
 				mavo.setManagerEmail(rs.getString("manager_email"));
@@ -111,7 +111,7 @@ public class ManagerDao {
 
 		return null;
 	}
-
+	// DB에 저장된 관리자 정보 수정 후 저장
 	public boolean mgModify(ManagerVO mavo) {
 		conn = Dao.getConnect();
 		sql = "update tbl_manager" + " set manager_pw = nvl(?,manager_pw),"
@@ -139,7 +139,7 @@ public class ManagerDao {
 
 		return false;
 	}
-
+	// DB에 저장된 관리자 계정 삭제
 	public boolean mgDelete(String id) {
 		conn = Dao.getConnect();
 		sql = "delete from tbl_manager where manager_id = ?";
@@ -159,7 +159,7 @@ public class ManagerDao {
 
 		return false;
 	}
-
+	// DB로부터 자료 가져와 가입된 관리자 계정 콘솔 출력
 	public List<ManagerVO> mgList() {
 		conn = Dao.getConnect();
 		sql = "select * from tbl_manager";
@@ -173,7 +173,7 @@ public class ManagerDao {
 				mavo.setManagerNo(rs.getInt("manager_no"));
 				mavo.setManagerId(rs.getString("manager_id"));
 				mavo.setManagerName(rs.getString("manager_name"));
-				mavo.setManagerBirth(rs.getString("manager_birth"));
+				mavo.setManagerBirth(rs.getString("manager_birth").substring(0,10));
 				mavo.setManagerPhone(rs.getString("manager_phone"));
 				mavo.setManagerAddr(rs.getString("manager_addr"));
 				mavo.setManagerEmail(rs.getString("manager_email"));
