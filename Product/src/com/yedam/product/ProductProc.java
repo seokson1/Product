@@ -14,7 +14,7 @@ public class ProductProc {
 	ManagerDao mdao = new ManagerDao();
 	UserDao udao = new UserDao();
 	UserVO user = null;
-	String user_id = null;
+	static String user_id = null;
 	
 	
 	// 관리자 로그인 하기 위한 아이디, 비밀번호 값 입력 -> ManagerDao 자료 넘김
@@ -130,7 +130,7 @@ public class ProductProc {
 	// 구매목록 출력 메소드 실행
 	public void buyList() {
 		
-	List<UserVO> list= pdao.resultList();
+	List<UserVO> list= pdao.resultList(user_id);
 	if(list.size() < 0) {
 		System.out.println("구매목록이 없습니다.");
 	} 

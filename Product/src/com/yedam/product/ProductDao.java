@@ -17,7 +17,6 @@ public class ProductDao {
 	ResultSet rs;
 	String sql;
 	String sql1;
-
 	private void close() {
 		try {
 			if (conn != null) {
@@ -221,16 +220,17 @@ public class ProductDao {
 
 	}
 	// 저장된 구매리스트 값 콘솔 출력
-	public List<UserVO> resultList() {
+	public List<UserVO> resultList(String id) {
 		List<UserVO> list = new ArrayList<>();
 		conn = Dao.getConnect();
-		sql = "select * from tbl_list";
+		sql = "select * from tbl_list where list_userid = ?";
 		
 
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
-
+			
 			while (rs.next()) {
 				UserVO user = new UserVO();
 				user.setListNo(rs.getInt("list_no"));

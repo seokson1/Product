@@ -27,13 +27,13 @@ public class UserVO {
 	private int totalPrice; // 총 주문 금액
 	
 	public String detailInfo() {
-		return "  아이디: " + userId + " 생년월일: " + userBirth
-				 + " 연락처: " + userPhone + " 주소: " + userAddr;
+		return "아이디: " + userId + "| 생년월일: " + userBirth
+				 + "| 연락처: " + userPhone + "| 주소: " + userAddr;
 	}
 	public String buyInfo() {
-		return  "수령인 " + userName  + " 연락처: " + userPhone + " 배송지: " + 
-				userAddr + "\n" + "상품명: " + buyName + " 상품가격: " + buyPrice  + 
-				" 주문수량: " + quantity + " 총금액: "  + totalPrice;
+		return  "수령인 " + userName  + "| 연락처: " + userPhone + "| 배송지: " + 
+				userAddr + "\n" + "상품명: " + buyName + "| 상품가격: " + buyPrice  + 
+				"| 주문수량: " + quantity + "| 총금액: "  + totalPrice;
 	}
 	public String buyListInfo() {
 		return "번호: " + listNo + "| 구매자: " + userName + "| 연락처: " + userPhone + "| 주소:" + userAddr +
